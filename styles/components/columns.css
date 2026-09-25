@@ -1,0 +1,43 @@
+.columns {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+	.columns {
+		flex-direction: row;
+	}
+}
+
+.column {
+	flex: 1;
+	display: grid;
+	grid-template-rows: var(--task-size) 1fr;
+	gap: 0.5rem;
+}
+
+.column-title {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--secondary-color);
+	color: var(--primary-color);
+
+	& h3 {
+		font-size: 1rem;
+		text-transform: uppercase;
+	}
+
+	& h3::after {
+		content: attr(data-tasks);
+		background: lightblue;
+		margin-left: 0.25rem;
+		border-radius: 0.25rem;
+		padding: 0 0.25rem;
+	}
+
+	& button {
+		margin-left: auto;
+		font-size: 2rem;
+	}
+}

@@ -1,0 +1,30 @@
+:root {
+	--bg-color: #e2e8f0;
+	--text-color: #404040;
+	--primary-color: #475569;
+	--secondary-color: #cdb5e1;
+	--task-color: #f6f6f6;
+	--cansel-color: #e5e7eb;
+	--confirm-color: #dc2626;
+	--confirm-hover-color: #b91c1c;
+	--task-size: 48px;
+}
+
+* {
+	font-family: Mulish, sans-serif;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--bg-color);
+	color: var(--text-color);
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr;
+}
+
+h1 {
+	margin: 2rem 0;
+}

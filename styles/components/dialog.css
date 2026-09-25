@@ -1,0 +1,104 @@
+/* .confirm-modal[open] {
+	opacity: 1;
+	transform: translate(-50%, -50%) translateY(0);
+
+	&::backdrop {
+		background: rgba(0, 0, 0, 0.25);
+	}
+} */
+
+.confirm-modal {
+	opacity: 0;
+	transform: translate(-50%, -50%) translateY(50px);
+	transition: all 0.3s allow-discrete;
+	left: 50%;
+	top: 50%;
+	border: none;
+	border-radius: 0.25rem;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+	&[open] {
+		opacity: 1;
+		transform: translate(-50%, -50%) translateY(0);
+
+		&::backdrop {
+			background: rgba(0, 0, 0, 0.1);
+			transition: all 0.3s allow-discrete;
+		}
+	}
+
+	@starting-style {
+		&[open] {
+			opacity: 0;
+			transform: translate(-50%, -50%) translateY(50px);
+
+			&::backdrop {
+				background: rgba(0, 0, 0, 0);
+			}
+		}
+	}
+
+	&::backdrop {
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+	}
+
+	& form {
+		padding: 2rem;
+	}
+
+	& form > *:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+
+	& h3 {
+		font-size: 1.5rem;
+	}
+
+	& div.preview {
+		font-size: 0.875rem;
+		padding-left: 0.5rem;
+		border-left: 2px solid var(--secondary-color);
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		opacity: 0.75;
+	}
+
+	& menu {
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.5rem;
+	}
+
+	& button {
+		opacity: 1;
+		font-size: 1rem;
+		padding: 0.5rem 1rem;
+		border-radius: 0.25rem;
+		border: 1px solid transparent;
+		box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+	}
+
+	& button#cansel {
+		border-color: var(--cansel-color);
+	}
+
+	& button#confirm {
+		border-color: var(--confirm-color);
+		background: var(--confirm-color);
+		color: #fff;
+	}
+
+	& button#confirm:hover {
+		border-color: var(--confirm-hover-color);
+		background: var(--confirm-hover-color);
+	}
+}
+
+@starting-style {
+	.confirm-modal[open] {
+	}
+	.confirm-modal[open]::backdrop {
+	}
+}

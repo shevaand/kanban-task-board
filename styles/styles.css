@@ -1,0 +1,8 @@
+@import 'fonts.css';
+
+@import './components/global.css';
+@import './components/button.css';
+@import './components/container.css';
+@import './components/columns.css';
+@import './components/tasks.css';
+@import './components/dialog.css';
