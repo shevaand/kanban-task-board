@@ -78,7 +78,6 @@ const handleEdit = event => {
 	task.replaceWith(input)
 	input.focus()
 
-	//move cursor to end
 	const selection = window.getSelection()
 	selection.selectAllChildren(input)
 	selection.collapseToEnd()
@@ -86,8 +85,8 @@ const handleEdit = event => {
 
 const handleBlur = event => {
 	const input = event.target
-	const content = input.innerText.trim() || 'Untitle'
-	const task = createTask(content.replace(/\n/g, '<br>'))
+	const content = input.innerText.trim() || 'Untitled'
+	const task = createTask(content)
 	input.replaceWith(task)
 }
 
@@ -124,12 +123,16 @@ const createTask = content => {
 	const task = document.createElement('div')
 	task.className = 'task'
 	task.draggable = true
-	task.innerHTML = `
-		<div> ${content}	</div>
-		<menu>
-			<button data-edit><i class="bi bi-pencil-square"></i></button>
-			<button data-delete><i class="bi bi-trash"></i></button>
-		</menu>`
+
+	const text = document.createElement('div')
+	text.textContent = content
+
+	const menu = document.createElement('menu')
+	menu.innerHTML = `
+		<button data-edit><i class="bi bi-pencil-square"></i></button>
+		<button data-delete><i class="bi bi-trash"></i></button>`
+
+	task.append(text, menu)
 	task.addEventListener('dragstart', handleDragstart)
 	task.addEventListener('dragend', handleDragend)
 	return task
@@ -147,11 +150,19 @@ const createTaskInput = (text = '') => {
 			event.target.innerHTML = ''
 		}
 	})
+
+	input.addEventListener('keydown', event => {
+		if (event.key === 'Enter' && !event.shiftKey) {
+			event.preventDefault()
+			input.blur()
+		}
+	})
+
 	input.addEventListener('blur', handleBlur)
 	return input
 }
 
-tasksElements = columnsContainer.querySelectorAll('.tasks')
+const tasksElements = columnsContainer.querySelectorAll('.tasks')
 for (const tasksEl of tasksElements) {
 	tasksEl.addEventListener('dragover', handleDragover)
 	tasksEl.addEventListener('drop', handleDrop)

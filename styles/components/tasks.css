@@ -18,6 +18,11 @@
 	cursor: move;
 	transition: 0.3s;
 
+	& > div {
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+	}
+
 	&.dragging {
 		cursor: move;
 		box-shadow: none;
@@ -25,11 +30,8 @@
 		background: var(--secondary-color);
 		opacity: 0.4;
 	}
-	/* & * {
-			opacity: 0.6;
-		} */
+
 	&.dragging * {
-		/* visibility: visible !important; */
 		opacity: 1;
 	}
 
